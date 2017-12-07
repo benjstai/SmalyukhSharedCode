@@ -131,6 +131,11 @@ for preim=1:npreim
     catch
         ph = phi(end);
     end
+    try
+        alphaval = alpha(preim);
+    catch
+        alphaval = alpha(end);
+    end
     % calculate scalar valued field lim->0 is the preimage of th/ph on S2
     px = sin(th)*cos(ph);
     py = sin(th)*sin(ph);
@@ -153,7 +158,7 @@ for preim=1:npreim
     hold on
     ptch = patch(fv,...
         'FaceColor',surfacecolor{preim},...
-        'FaceAlpha',alpha,...
+        'FaceAlpha',alphaval,...
         'EdgeColor','none',...
         'SpecularStrength',.9,...
         'AmbientStrength',0.3);
