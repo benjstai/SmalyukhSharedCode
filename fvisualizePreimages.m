@@ -23,8 +23,8 @@ function fvisualizePreimages(varargin)
 
 % Defalt values:
 nn = [];
-theta = 0;
-phi = 0;
+theta = pi/2;
+phi = linspace(0,2*pi,5);
 alpha = 1;
 epsilon = 0.3;
 fignum = 1;
@@ -80,7 +80,7 @@ end
 k = 0;
 while k<numel(phi)
     k = k+1;
-    if phi(k) < -pi || phi(k) > pi
+    if phi(k) < 0 || phi(k) > 2*pi
         warning('Out of range phi value ignored!')
         phi = phi(phi~=phi(k));
         if isempty(phi),error('No valid phi value!'),end
