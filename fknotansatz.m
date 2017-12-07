@@ -14,9 +14,12 @@
 %       nn: 4D double array with size [nx,ny,nz,3]
 % 
 %   An example of using this function and visualizing the resulting field:
-%       >> nn = fknotansatz; fvisualizePreimages
+%       >> clear, nn = fknotansatz; fvisualizePreimages
 % 
-
+% >> clear, nn = fknotansatz('a',1,'b',1,'alpha',1,'beta',1); fvisualizePreimages()
+% this produces something that looks like it was S3 rotated by pi/4...
+% can we do a rotation on lines 71:73 or something beforehand? 
+% 
 
 function nn = fknotansatz(varargin)
 
