@@ -9,6 +9,7 @@
 %   Use ('clf',false) to use the figure without clearing (defalt is true).
 % 
 %     input: () if nargin = 0, nn from the base workspace is used
+% 
 %     optional input: (nn, theta, phi, alpha, epsilon, fignum, clf)
 %       nn: 4D double array with size [m,n,p,3]
 %       theta: list of polar angles to use [-pi:pi]
@@ -26,9 +27,10 @@
 function fvisualizePreimages(varargin)
 
 % Defalt values:
+n = 7;
 nn = [];
 theta = pi/2;
-phi = linspace(0,2*pi-2*pi/5,5);
+phi = linspace(0,2*pi-2*pi/5,10);
 alpha = 1;
 epsilon = 0.3;
 fignum = 1;
