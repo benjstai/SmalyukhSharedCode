@@ -16,10 +16,6 @@
 %   An example of using this function and visualizing the resulting field:
 %       >> clear, nn = fknotansatz; fvisualizePreimages
 % 
-% >> clear, nn = fknotansatz('a',1,'b',1,'alpha',1,'beta',1); fvisualizePreimages()
-% this produces something that looks like it was S3 rotated by pi/4...
-% can we do a rotation on lines 71:73 or something beforehand? 
-% 
 
 function nn = fknotansatz(varargin)
 
@@ -69,7 +65,7 @@ z0 = cos(f(r))+sin(f(r)).*1i.*x3./r;
 w = z1.^alpha.*z0.^beta./(z1.^a+z0.^b); % for torus knots
 
 n1 = (w+conj(w))./(1+abs(w).^2);
-n2 = -1i*(w-conj(w))./(1+abs(w).^2); % can we do a rotation??
+n2 = -1i*(w-conj(w))./(1+abs(w).^2);
 n3 = (-1+abs(w).^2)./(1+abs(w).^2);
 
 % make nn and force vertical BCs
