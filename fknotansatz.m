@@ -90,3 +90,12 @@ nn(:,end,:,1) = 0; nn(:,end,:,2) = 0; nn(:,end,:,3) = -1;
 nn(1,:,:,1) = 0; nn(1,:,:,2) = 0; nn(1,:,:,3) = -1;
 nn(end,:,:,1) = 0; nn(end,:,:,2) = 0; nn(end,:,:,3) = -1;
 
+disp('------------------------------------------------------------------')
+disp(['    Generated:  w = ',func2str(wknot)])
+disp(['             f(r) = ',func2str(f)])
+disp(['            [a,b] = ',num2str([a,b])])
+disp(['     [alpha,beta] = ',num2str([alpha,beta])])
+disp(['         size(nn) = ',num2str(size(nn))])
+disp(['       [lx,ly,lz] = ',num2str([lx,ly,lz])])
+disp('------------------------------------------------------------------')
+
