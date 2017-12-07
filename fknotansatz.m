@@ -10,6 +10,7 @@
 %       a,b: integers where the field will form an a-b knot [3],[2]
 %       nx,ny,nz: number of points along x, y, and z dimensions [150]
 %       lx,ly,lz: length of computational grid [4]
+%       f(r): a function f(0)=pi, f(r->inf)=0 ['pi*sech(r)']
 %     output: (nn)
 %       nn: 4D double array with size [nx,ny,nz,3]
 % 
@@ -24,11 +25,14 @@ alpha = 2; beta = 1; % alpha > beta ex: alpha = 2; beta = 1;
 a = 3; b = 2; % positive integers ex: a = 3; b = 2;
 nx = 150; ny = 150; nz = 150;
 lx = 4; ly = 4; lz = 4;
+f = @(r) pi*sech(pi*r/2); % f(r) --> f(0)=pi, f(inf)=0 ex: pi*sech(r)
 
 % Argument values
 nVarargs = length(varargin);
 for k = 1:2:nVarargs
     switch lower(varargin{k}) % case insensitive
+        case 'f(r)'
+            f = @(r) eval(varargin{k+1});
         case 'alpha'
             alpha = varargin{k+1};
         case 'beta'
@@ -58,7 +62,6 @@ x3 = linspace(-lz/2,lz/2,nz);
 [x1,x2,x3] = ndgrid(x1,x2,x3);
 
 r = sqrt(x1.^2+x2.^2+x3.^2);
-f = @(r) pi*sech(pi*r/2); % f(r) --> f(0)=pi, f(inf)=0 ex: pi*sech(r)
 z1 = sin(f(r)).*(x1+1i*x2)./r;
 z0 = cos(f(r))+sin(f(r)).*1i.*x3./r;
 
