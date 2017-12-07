@@ -24,6 +24,16 @@
 % example of usage:
 %       >> clear, nn = fknotansatz; fvisualizePreimages('alpha',0.7)
 % 
+%-------------------------------------------------------------------
+% Custom Software, Developed for Smalyukh-Lab by staff.
+% This software is in the public domain, furnished "as is", without
+% technical support, and with no warranty, express or implied, as
+% to its usefulness for any purpose.
+%
+% REVISION HISTORY
+% Created.                                 12/06/2017  paul ackerman
+%-------------------------------------------------------------------
+
 
 function fvisualizePreimages(varargin)
 
