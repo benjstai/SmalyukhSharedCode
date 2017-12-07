@@ -30,7 +30,7 @@ epsilon = 0.3;
 fignum = 1;
 clfIO = 1;
 
-% new defalt value
+% Argument values
 nVarargs = length(varargin);
 for k = 1:2:nVarargs
     switch lower(varargin{k}) % case insensitive
@@ -61,6 +61,7 @@ if nargin==0 || isempty(nn)
     end
 end
 
+% if nn is wrong shape
 [m,n,p,test] = size(nn);
 if ~(test==3)
     error('First argument must be a 4D double array with size [m,n,p,3]!')
@@ -94,10 +95,14 @@ map = jet(N);
 
 npreim = max([numel(theta),numel(phi)]);
 surfacecolor = {length(theta)};
+
+% call figure
 h = figure(fignum);
 if clfIO
     clf
 end
+
+% calculate and patch preimages of th/ph point on S2
 for preim=1:npreim
     try
         th = theta(preim);
@@ -109,20 +114,25 @@ for preim=1:npreim
     catch
         ph = phi(end);
     end
+    % calculate scalar valued field lim->0 is the preimage of th/ph on S2
     px = sin(th)*cos(ph);
     py = sin(th)*sin(ph);
     pz = cos(th);
     diffmag = sqrt((nn(:,:,:,1)-px).^2+...
                    (nn(:,:,:,2)-py).^2+...
                    (nn(:,:,:,3)-pz).^2);
+    % generate an isosurface
     fv = isosurface(diffmag,epsilon);
+    % prevents error from an empty patch
     if length(fv.vertices)>=3
         fv.vertices = fv.vertices-...
             repmat([(m-1)/2+1 (n-1)/2+1 (p-1)/2+1],...
             length(fv.vertices),1);
     end
+    % determine patch color
     val = round(abs(th)/pi*(N-1)+1);
     surfacecolor{preim} = map(val,:);
+    % generate the patch
     hold on
     ptch = patch(fv,...
         'FaceColor',surfacecolor{preim},...

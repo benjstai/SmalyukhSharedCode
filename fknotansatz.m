@@ -26,7 +26,7 @@ a = 3; b = 2; % positive integers ex: a = 3; b = 2;
 nx = 150; ny = 150; nz = 150;
 lx = 4; ly = 4; lz = 4;
 
-% new defalt value
+% Argument values
 nVarargs = length(varargin);
 for k = 1:2:nVarargs
     switch lower(varargin{k}) % case insensitive
