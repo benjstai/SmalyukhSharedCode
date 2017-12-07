@@ -5,13 +5,16 @@
 %   outputs a 4D double array with size [nx,ny,nz,3].
 %   
 %     input: () if nargin = 0, the defalt valus are used
-%     optional input: ()
+%     optional input: (alpha,beta,a,b,nx,ny,nz,lx,ly,lz)
 %       alpha,beta: integer where alpha > beta [2],[1]
 %       a,b: integers where the field will form an a-b knot [3],[2]
 %       nx,ny,nz: number of points along x, y, and z dimensions [150]
 %       lx,ly,lz: length of computational grid [4]
 %     output: (nn)
 %       nn: 4D double array with size [nx,ny,nz,3]
+% 
+%   An example of using this function and visualizing the resulting field:
+%       >> nn = fknotansatz; fvisualizePreimages
 % 
 
 
