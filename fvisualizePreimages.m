@@ -9,7 +9,7 @@
 %   Use ('clf',false) to use the figure without clearing (defalt is true).
 % 
 %     input: () if nargin = 0, nn from the base workspace is used
-%     optional input:  (nn, theta, phi, alpha, epsilon, fignum, clf)
+%     optional input: (nn, theta, phi, alpha, epsilon, fignum, clf)
 %       nn: 4D double array with size [m,n,p,3]
 %       theta: list of polar angles to use [-pi:pi]
 %       phi: list of azamuthal angle to use [0:2*pi]
