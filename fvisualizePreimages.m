@@ -34,7 +34,6 @@
 % Created.                                 12/06/2017  paul ackerman
 %-------------------------------------------------------------------
 
-
 function fvisualizePreimages(varargin)
 
 % Defalt values:
