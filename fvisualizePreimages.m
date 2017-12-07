@@ -17,6 +17,7 @@
 %       epsilon: value used to generate isosurface in 'diffmag' [0:2]
 %       fignum: figure to use [scalar integer from 1 to 2147483646]
 %       clf: toggle clf true/false ([true],false,1,0)
+%       az,el: view(az,el), default [0,90]
 % 
 % example of usage:
 %       >> clear, nn = fknotansatz; fvisualizePreimages('alpha',0.7)
