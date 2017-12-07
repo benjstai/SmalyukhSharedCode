@@ -66,9 +66,21 @@ if ~(test==3)
     error('First argument must be a 4D double array with size [m,n,p,3]')
 end
 
-% if numel(theta)~=numel(phi)
-%     error('numel(theta)~=numel(phi)')
-% end
+% ignore out of range theta/phi values, return if no valid value
+for k=1:numel(theta)
+    if theta(k) < -pi || theta(k) > pi
+        warning('Out of range theta value ignored')
+        theta = theta(theta~=theta(k));
+    end
+end
+if isempty(theta),error('No valid theta value!'),end
+for k=1:numel(theta)
+    if phi(k) < -pi || phi(k) > pi
+        warning('Out of range phi value ignored')
+        phi = phi(phi~=phi(k));
+    end
+end
+if isempty(phi),error('No valid phi value!'),end
 
 % generate map for surfacecolor
 N = 2^7;
