@@ -7,15 +7,15 @@
 %     input: () if nargin = 0, the defalt valus are used
 % 
 %     optional input: (alpha,beta,a,b,nx,ny,nz,lx,ly,lz)
-%       alpha,beta: integer where alpha > beta [2],[1]
-%       a,b: integers where the field will form an a-b knot [3],[2]
-%       nx,ny,nz: number of points along x, y, and z dimensions [150]
-%       lx,ly,lz: length of computational grid [4]
+%       alpha,beta: integers, [2],[1]
+%       a,b: integers, [3],[2]
+%       nx,ny,nz: integers, # of points along x, y and z dimensions [150]
+%       lx,ly,lz: double, length of computational grid [4]
 %       f(r): a function f(0)=pi, f(r->inf)=0 ['pi*sech(r)']
-%       wknot: change w function for other knots 
+%       wknot: function for field 
 % ['z1.^a./z0.^b'], axis symmetric linked preimeges [defalt]
-% 'z1.^alpha.*z0.^beta./(z1.^a+z0.^b)', trefoil knot Q=alpha*b+beta*a
 % '(z1.^(a+1))./(z1.^2-z0.^2)', Q=2a+1 Hopfion
+% 'z1.^alpha.*z0.^beta./(z1.^a+z0.^b)', trefoil knot Q=alpha*b+beta*a
 % 
 %     output: (nn)
 %       nn: 4D double array with size [nx,ny,nz,3]
