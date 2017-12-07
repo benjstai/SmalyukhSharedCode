@@ -32,7 +32,7 @@ a = 3; b = 2; % positive integers ex: a = 3; b = 2;
 nx = 150; ny = 150; nz = 150;
 lx = 4; ly = 4; lz = 4;
 f = @(r) pi*sech(pi*r/2); % f(r) --> f(0)=pi, f(inf)=0 ex: pi*sech(r)
-wknot = @(alpha,beta,a,b,z1,z0) z1.^a./z0.^b; % for links
+wknot = @(alpha,beta,a,b,z1,z0) z1.^a./z0.^b;
 
 % Argument values
 nVarargs = length(varargin);
