@@ -32,6 +32,8 @@ alpha = 1;
 epsilon = 0.3;
 fignum = 1;
 clfIO = 1;
+az = 0;
+el = 90;
 
 % Argument values
 nVarargs = length(varargin);
@@ -51,6 +53,10 @@ for k = 1:2:nVarargs
             fignum = varargin{k+1};
         case 'clf'
             clfIO = varargin{k+1};
+        case 'az'
+            az = varargin{k+1};
+        case 'el'
+            el = varargin{k+1};
     end
 end
 
@@ -149,5 +155,6 @@ end
 
 axis equal tight off
 h.Color = 'w';
+view(az,el)
 camlight('right')
 
