@@ -1,18 +1,17 @@
 % Discription:
 % 
 % fknotansatz --> fuction that is used to generate a knotted field ansatz.
-%   Takes a variable number of arguments in the form of ('flag',input).
+%   Takes a variable number of arguments in the form of ('flag',input) and
+%   outputs a 4D double array with size [nx,ny,nz,3].
 %   
-%     input: () if nargin = 0, the defalt valuse are used
+%     input: () if nargin = 0, the defalt valus are used
 %     optional input: ()
-%       theta: list of polar angles to use [-pi:pi]
-%       phi: list of azamuthal angle to use [0:2*pi]
-%       alpha: transparency of preimages [0:1]
-%       epsilon: value used to generate isosurface in 'diffmag' [0:2]
-%       fignum: figure to use [scalar integer from 1 to 2147483646]
-%       clf: toggle clf true/false ([true],false,1,0)
+%       alpha,beta: integer where alpha > beta [2],[1]
+%       a,b: integers where the field will form an a-b knot [3],[2]
+%       nx,ny,nz: number of points along x, y, and z dimensions [150]
+%       lx,ly,lz: length of computational grid [4]
 %     output: (nn)
-%       nn: 4D double array with size [m,n,p,3]
+%       nn: 4D double array with size [nx,ny,nz,3]
 % 
 
 
