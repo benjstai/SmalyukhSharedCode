@@ -67,7 +67,7 @@ end
 % if nn is not given, look for nn in the base workspace
 if nargin==0 || isempty(nn)
     try
-        disp('Looking for ''nn'' in the base Workspace')
+        disp('    Looking for ''nn'' in the base Workspace')
         nn = evalin('base','nn');
     catch
         error('no ''nn'' variable found in the base Workspace!')
