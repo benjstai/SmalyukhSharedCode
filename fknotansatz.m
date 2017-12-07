@@ -12,8 +12,9 @@
 %       lx,ly,lz: length of computational grid [4]
 %       f(r): a function f(0)=pi, f(r->inf)=0 ['pi*sech(r)']
 %       wknot: change w function for other knots 
-%           ['z1.^a./z0.^b'], axis symmetric links [defalt]
-%            'z1.^alpha.*z0.^beta./(z1.^a+z0.^b)', trefoil
+%           ['z1.^a./z0.^b'], axis symmetric linked preimeges [defalt]
+%            'z1.^alpha.*z0.^beta./(z1.^a+z0.^b)', trefoil knot soliton
+%            '(z1.^(a+1))./(z1.^2-z0.^2)', Q=2a+1 Hopfion
 %     output: (nn)
 %       nn: 4D double array with size [nx,ny,nz,3]
 % 
