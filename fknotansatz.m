@@ -6,7 +6,7 @@
 %   
 %     input: () if nargin = 0, the defalt valus are used
 % 
-%     optional input: (alpha,beta,a,b,nx,ny,nz,lx,ly,lz)
+%     optional input:
 %       alpha,beta: integers, [2],[1]
 %       a,b: integers, [3],[2]
 %       nx,ny,nz: integers, # of points along x, y and z dimensions [150]
