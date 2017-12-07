@@ -1,22 +1,22 @@
 % Discription:
 % 
-% fvisualizePreimages --> a fuction that is used to visualize preimages, it
-%   takes a variable number of arguments in the form of -flag [argument].
-%   Number of preimages plotted is max([numel(theta),numel(phi)]).
-%     If theta(k) or phi(k) exceeds the index, the last theta/phi valus is
-%     used eg. theta(end) or phi(end).
+% fvisualizePreimages --> fuction that is used to visualize preimages.
+%   Takes a variable number of arguments in the form of ('flag',input).
+%   The number of preimages plotted is max([numel(theta),numel(phi)]).
+%     If theta(preim) or phi(preim) exceeds the index, the last theta/phi
+%     valus is used eg. theta(end) or phi(end).
 %   Lighing is applied to each surface during creation.
 %   Use ('clf',false) to use the figure without clearing (defalt is true).
 % 
 %     input: () if nargin = 0, nn from the base workspace is used
 %     optional input:  (nn, theta, phi, alpha, epsilon, fignum, clf)
 %       nn: 4D double array with size [m,n,p,3]
-%       theta: list of polar angles to use
-%       phi: list of azamuthal angle to use
-%       alpha: transparency of preimages
-%       epsilon: value used to generate isosurface in 'diffmag'
-%       fignum: figure to use
-%       clf: toggle clf true/false
+%       theta: list of polar angles to use [-pi:pi]
+%       phi: list of azamuthal angle to use [0:2*pi]
+%       alpha: transparency of preimages [0:1]
+%       epsilon: value used to generate isosurface in 'diffmag' [0:2]
+%       fignum: figure to use [scalar integer from 1 to 2147483646]
+%       clf: toggle clf true/false ([true],false,1,0)
 % 
 
 function fvisualizePreimages(varargin)
