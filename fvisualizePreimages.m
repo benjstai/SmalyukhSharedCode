@@ -57,13 +57,13 @@ if nargin==0 || isempty(nn)
         disp('Looking for ''nn'' in the base Workspace')
         nn = evalin('base','nn');
     catch
-        error('no ''nn'' variable found in the base Workspace')
+        error('no ''nn'' variable found in the base Workspace!')
     end
 end
 
 [m,n,p,test] = size(nn);
 if ~(test==3)
-    error('First argument must be a 4D double array with size [m,n,p,3]')
+    error('First argument must be a 4D double array with size [m,n,p,3]!')
 end
 
 % ignore out of range theta/phi values, return if no valid value
@@ -71,20 +71,22 @@ k = 0;
 while k<numel(theta)
     k = k+1;
     if theta(k) < -pi || theta(k) > pi
-        warning('Out of range theta value ignored')
+        warning('Out of range theta value ignored!')
         theta = theta(theta~=theta(k));
+        if isempty(theta),error('No valid theta value!'),end
+        k = k-numel(theta(theta==theta(k)));
     end
 end
-if isempty(theta),error('No valid theta value!'),end
 k = 0;
 while k<numel(phi)
     k = k+1;
     if phi(k) < -pi || phi(k) > pi
-        warning('Out of range phi value ignored')
+        warning('Out of range phi value ignored!')
         phi = phi(phi~=phi(k));
+        if isempty(phi),error('No valid phi value!'),end
+        k = k-numel(phi(phi==phi(k)));
     end
 end
-if isempty(phi),error('No valid phi value!'),end
 
 % generate map for surfacecolor
 N = 2^7;
