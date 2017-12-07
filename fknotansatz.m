@@ -11,6 +11,9 @@
 %       nx,ny,nz: number of points along x, y, and z dimensions [150]
 %       lx,ly,lz: length of computational grid [4]
 %       f(r): a function f(0)=pi, f(r->inf)=0 ['pi*sech(r)']
+%       wknot: change w function for other knots 
+%           ['z1.^a./z0.^b'], links [defalt]
+%            'z1.^alpha.*z0.^beta./(z1.^a+z0.^b)', trefoil
 %     output: (nn)
 %       nn: 4D double array with size [nx,ny,nz,3]
 % 
@@ -26,6 +29,7 @@ a = 3; b = 2; % positive integers ex: a = 3; b = 2;
 nx = 150; ny = 150; nz = 150;
 lx = 4; ly = 4; lz = 4;
 f = @(r) pi*sech(pi*r/2); % f(r) --> f(0)=pi, f(inf)=0 ex: pi*sech(r)
+wknot = @(alpha,beta,a,b,z1,z0) z1.^a./z0.^b; % for links
 
 % Argument values
 nVarargs = length(varargin);
@@ -33,6 +37,8 @@ for k = 1:2:nVarargs
     switch lower(varargin{k}) % case insensitive
         case 'f(r)'
             f = @(r) eval(varargin{k+1});
+        case 'wknot'
+            wknot = @(alpha,beta,a,b,z1,z0) eval(varargin{k+1});
         case 'alpha'
             alpha = varargin{k+1};
         case 'beta'
@@ -65,8 +71,7 @@ r = sqrt(x1.^2+x2.^2+x3.^2);
 z1 = sin(f(r)).*(x1+1i*x2)./r;
 z0 = cos(f(r))+sin(f(r)).*1i.*x3./r;
 
-w = z1.^alpha.*z0.^beta./(z1.^a+z0.^b); % for torus knots
-
+w = wknot(alpha,beta,a,b,z1,z0);
 n1 = (w+conj(w))./(1+abs(w).^2);
 n2 = -1i*(w-conj(w))./(1+abs(w).^2);
 n3 = (-1+abs(w).^2)./(1+abs(w).^2);
