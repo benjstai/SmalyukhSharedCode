@@ -27,7 +27,6 @@
 function fvisualizePreimages(varargin)
 
 % Defalt values:
-n = 7;
 nn = [];
 theta = pi/2;
 phi = linspace(0,2*pi-2*pi/5,10);
