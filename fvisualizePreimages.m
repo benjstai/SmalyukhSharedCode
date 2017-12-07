@@ -67,14 +67,18 @@ if ~(test==3)
 end
 
 % ignore out of range theta/phi values, return if no valid value
-for k=1:numel(theta)
+k = 0;
+while k<numel(theta)
+    k = k+1;
     if theta(k) < -pi || theta(k) > pi
         warning('Out of range theta value ignored')
         theta = theta(theta~=theta(k));
     end
 end
 if isempty(theta),error('No valid theta value!'),end
-for k=1:numel(theta)
+k = 0;
+while k<numel(phi)
+    k = k+1;
     if phi(k) < -pi || phi(k) > pi
         warning('Out of range phi value ignored')
         phi = phi(phi~=phi(k));
