@@ -19,6 +19,7 @@
 %       fignum: figure to use [scalar integer from 1 to 2147483646]
 %       clf: toggle clf true/false ([true],false,1,0)
 %       az,el: view(az,el), default [0,90]
+%       v: verbose output [true],false
 % 
 % example of usage:
 %       >> clear, nn = fknotansatz; fvisualizePreimages('alpha',0.7)
@@ -36,6 +37,7 @@ fignum = 1;
 clfIO = 1;
 az = 0;
 el = 90;
+verbose = true;
 
 % Argument values
 nVarargs = length(varargin);
@@ -59,6 +61,8 @@ for k = 1:2:nVarargs
             az = varargin{k+1};
         case 'el'
             el = varargin{k+1};
+        case 'v'
+            verbose = varargin{k+1};
         otherwise
             warning(['Unknown input: ',lower(varargin{k})])
     end
@@ -162,3 +166,9 @@ h.Color = 'w';
 view(az,el)
 camlight('right')
 
+if verbose
+disp('------------------------------------------------------------------')
+disp(['    numel(theta) = ',num2str(numel(theta))])
+disp(['      numel(phi) = ',num2str(numel(phi))])
+disp('------------------------------------------------------------------')
+end

@@ -16,6 +16,7 @@
 % ['z1.^a./z0.^b'], axis symmetric linked preimeges [defalt]
 % '(z1.^(a+1))./(z1.^2-z0.^2)', Q=2a+1 Hopfion
 % 'z1.^alpha.*z0.^beta./(z1.^a+z0.^b)', trefoil knot Q=alpha*b+beta*a
+%       v: verbose output [true],false
 % 
 %     output: (nn)
 %       nn: 4D double array with size [nx,ny,nz,3]
@@ -33,6 +34,7 @@ nx = 150; ny = 150; nz = 150;
 lx = 4; ly = 4; lz = 4;
 f = @(r) pi*sech(pi*r/2); % f(r) --> f(0)=pi, f(inf)=0 ex: pi*sech(r)
 wknot = @(alpha,beta,a,b,z1,z0) z1.^a./z0.^b;
+verbose = true;
 
 % Argument values
 nVarargs = length(varargin);
@@ -62,6 +64,8 @@ for k = 1:2:nVarargs
             ly = varargin{k+1};
         case 'lz'
             lz = varargin{k+1};
+        case 'v'
+            verbose = varargin{k+1};
         otherwise
             warning(['Unknown input: ',lower(varargin{k})])
     end
@@ -90,6 +94,7 @@ nn(:,end,:,1) = 0; nn(:,end,:,2) = 0; nn(:,end,:,3) = -1;
 nn(1,:,:,1) = 0; nn(1,:,:,2) = 0; nn(1,:,:,3) = -1;
 nn(end,:,:,1) = 0; nn(end,:,:,2) = 0; nn(end,:,:,3) = -1;
 
+if verbose
 disp('------------------------------------------------------------------')
 str = func2str(wknot);
 disp(['    Generated:  w = ',str(24:end)])
@@ -100,4 +105,5 @@ disp(['     [alpha,beta] = ',num2str([alpha,beta])])
 disp(['         size(nn) = ',num2str(size(nn))])
 disp(['       [lx,ly,lz] = ',num2str([lx,ly,lz])])
 disp('------------------------------------------------------------------')
+end
 
