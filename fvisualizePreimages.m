@@ -59,6 +59,8 @@ for k = 1:2:nVarargs
             az = varargin{k+1};
         case 'el'
             el = varargin{k+1};
+        otherwise
+            warning(['Unknown input: ',lower(varargin{k})])
     end
 end
 
